@@ -5,7 +5,7 @@ A legit game that totally isn’t homework assignment for [OART 1612](https://gi
 
 
 ```
-    ___
+     ___
     /\/\
 Matthew Conto
 ```
