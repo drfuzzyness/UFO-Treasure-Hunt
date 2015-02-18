@@ -37,6 +37,7 @@ public class Flasher : MonoBehaviour {
 		}
 	}
 
+
 	void reset() {
 		gameObject.GetComponent<Text>().enabled = true;
 		flashTimer = 0f;
