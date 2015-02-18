@@ -44,7 +44,6 @@ public class UFOController : MonoBehaviour {
 	}
 
 	bool tryToAbductObject() {
-		if( 
 		return false;
 	}
 }
