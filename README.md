@@ -1,7 +1,9 @@
 UFO-Treasure-Hunt
 =================
 
-A legit game that totally isn’t homework assignment for [OART 1612](https://github.com/radiatoryang/nyu_studio_spring2015).
+A legit game that’s totally a homework assignment for [OART 1612](https://github.com/radiatoryang/nyu_studio_spring2015).
+
+Play it at [classes.matthewconto.com](http://classes.matthewconto.com/spring-2015/gds/hw03-ufo-treasure-hunt/).
 
 ## Requirements
 - Make a *treasure hunt game*
