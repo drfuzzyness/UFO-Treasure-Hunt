@@ -10,30 +10,18 @@ public class UFOController : MonoBehaviour {
 	public Transform beam;
 
 	public GameObject bootyAlert;
-	public Text spaceAlert;
+	public GameObject spaceAlert;
 	public Text distanceTextbox;
-	public Text bootyAmountTextbox;
 
-	public List<Transform> treasures;
+	public Transform theTreasure;
 
-	private int bootyCollected;
-	private bool isUnderTreasure;
-	private GameObject targetedTreasure = null;
-
-	public void areUnderTreasure( GameObject treasure ) {
-		targetedTreasure = treasure;
-		isUnderTreasure = true;
-	}
-
-	public void areNotUnderTreasure() {
-		targetedTreasure = null;
-		isUnderTreasure = false;
-	}
+	private bool canGrabTreasure;
+	
 
 
 	// Use this for initialization
 	void Start () {
-		isUnderTreasure = false;
+		canGrabTreasure = false;
 	}
 	
 	// Update is called once per frame
@@ -63,7 +51,7 @@ public class UFOController : MonoBehaviour {
 			transform.position += new Vector3( maxSpeed * Time.deltaTime, 0f, 0f);
 		}
 
-		if( Input.GetKey( KeyCode.Space ) && isUnderTreasure ) {
+		if( Input.GetKey( KeyCode.Space ) && canGrabTreasure ) {
 			collectBooty();
 		}
 	}
@@ -73,37 +61,33 @@ public class UFOController : MonoBehaviour {
 	}
 
 	void updateTextDisplay() {
-		// find nearest object
-		// if close, 
-		// total booty collected
-		//
+		updateDistanceDisplay();
 
 	}
 
 	void updateDistanceDisplay() {
-		string top = "on top of yee";
-		float topRadius = 4f;
-		string veryClose = "so very close";
-		float veryCloseRadius = 10f;
-		string close = "nearby";
-		float cCloseRadius = 50f;
-		string normal = "a moderete distance away";
-		float normalRadius = 100f;
-		string far = "far away";
+		float distance = ( theTreasure.position - transform.position ).magnitude;
 
-
-	}
+		if( distance < 50f ) {
+			distanceTextbox.text = "on top of it";
+			canGrabTreasure = true;
+			spaceAlert.SetActive(true);
+		} else if( distance < 300f ) {
+			spaceAlert.SetActive(false);
+			distanceTextbox.text = "so very close";
+			canGrabTreasure = false;
+		} else if( distance < 500f ) {
+			distanceTextbox.text = "nearby";
+		} else if( distance < 1000f ) {
+			distanceTextbox.text = "a moderete distance away";
+		} else {
+			distanceTextbox.text = "far away";
+		}
+ 	}
 
 	void collectBooty() {
-		if( targetedTreasure != null ){
-			bootyCollected++;
-			bootyAlert.SetActive( true );
-			targetedTreasure.SetActive( false );
-			areNotUnderTreasure();
-		}
-		else {
-			Debug.Log("sick treasure error bro");
-		}
+		bootyAlert.SetActive( true );
+		theTreasure.position = new Vector3(0f, 0f, -5000f);
 	}
 
 }

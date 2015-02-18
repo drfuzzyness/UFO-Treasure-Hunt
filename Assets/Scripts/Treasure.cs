@@ -14,12 +14,5 @@ public class Treasure : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	void OnCollisionEnter() {
-		theUFO.areUnderTreasure( this );
-	}
-
-	void OnCollisionExit() {
-		theUFO.areNotUnderTreasure();
-	}
+	
 }

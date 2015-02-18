@@ -21,10 +21,6 @@ public class Flasher : MonoBehaviour {
 		if( flashTimer >= flashDuration ) {
 			flashTimer = 0;
 			toggleVisible();
-			numFlashesTimer++;
-			if( numFlashesTimer >= numFlashes ) {
-				gameObject.SetActive( false );
-			}
 		}
 	}
 
